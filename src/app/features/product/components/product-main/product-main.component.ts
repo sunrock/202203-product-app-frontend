@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Product } from '../../models';
-import { ConfirmDeleteModalComponent } from '../confirm-delete-modal/confirm-delete-modal.component';
+import { ConfirmDeleteModalComponent } from './confirm-delete-modal/confirm-delete-modal.component';
 
 @Component({
   selector: 'app-product-main',
@@ -53,33 +53,33 @@ export class ProductMainComponent implements OnInit, AfterViewInit {
 }
 
 const ELEMENT_DATA: Product[] = [
-  { position: 1, name: 'Hydrogen', price: 1.0079, type: 'Toys', isActive: true },
-  { position: 2, name: 'Helium', price: 1.0079, type: 'Books', isActive: true },
-  { position: 3, name: 'Lithium', price: 1.0079, type: 'Food,', isActive: true },
-  { position: 4, name: 'Beryllium', price: 1.0079, type: 'Furniture', isActive: true },
-  { position: 5, name: 'Boron', price: 1.0079, type: 'Electronics,', isActive: true },
-  { position: 6, name: 'Carbon', price: 1.0079, type: 'Toy', isActive: true },
-  { position: 7, name: 'Nitrogen', price: 1.0079, type: 'Food', isActive: true },
+  { pid: 1, name: 'Hydrogen', price: 1.0079, type: 'Toys', isActive: true },
+  { pid: 2, name: 'Helium', price: 1.0079, type: 'Books', isActive: true },
+  { pid: 3, name: 'Lithium', price: 1.0079, type: 'Food,', isActive: true },
+  { pid: 4, name: 'Beryllium', price: 1.0079, type: 'Furniture', isActive: true },
+  { pid: 5, name: 'Boron', price: 1.0079, type: 'Electronics,', isActive: true },
+  { pid: 6, name: 'Carbon', price: 1.0079, type: 'Toy', isActive: true },
+  { pid: 7, name: 'Nitrogen', price: 1.0079, type: 'Food', isActive: true },
 
   /*
-  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-  { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-  { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-  { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
-  { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
-  { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
-  { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
-  { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
-  { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
-  { position: 11, name: 'Sodium', weight: 22.9897, symbol: 'Na' },
-  { position: 12, name: 'Magnesium', weight: 24.305, symbol: 'Mg' },
-  { position: 13, name: 'Aluminum', weight: 26.9815, symbol: 'Al' },
-  { position: 14, name: 'Silicon', weight: 28.0855, symbol: 'Si' },
-  { position: 15, name: 'Phosphorus', weight: 30.9738, symbol: 'P' },
-  { position: 16, name: 'Sulfur', weight: 32.065, symbol: 'S' },
-  { position: 17, name: 'Chlorine', weight: 35.453, symbol: 'Cl' },
-  { position: 18, name: 'Argon', weight: 39.948, symbol: 'Ar' },
-  { position: 19, name: 'Potassium', weight: 39.0983, symbol: 'K' },
-  { position: 20, name: 'Calcium', weight: 40.078, symbol: 'Ca' },
+  { pid: 2, name: 'Helium', price: 4.0026, type: 'Toys', isActive: true },
+  { pid: 3, name: 'Lithium', price: 6.941, type: 'Toys', isActive: true },
+  { pid: 4, name: 'Beryllium', price: 9.0122, type: 'Furniture', isActive: true },
+  { pid: 5, name: 'Boron', price: 10.811, type: 'Toy', isActive: true },
+  { pid: 6, name: 'Carbon', price: 12.0107, type: 'Toy', isActive: true },
+  { pid: 7, name: 'Nitrogen', price: 14.0067, type: 'Toy', isActive: true },
+  { pid: 8, name: 'Oxygen', price: 15.9994, type: 'Toy', isActive: true },
+  { pid: 9, name: 'Fluorine', price: 18.9984, type: 'Toy', isActive: true },
+  { pid: 10, name: 'Neon', price: 20.1797, type: 'Food', isActive: true },
+  { pid: 11, name: 'Sodium', price: 22.9897, type: 'Food', isActive: true },
+  { pid: 12, name: 'Magnesium', price: 24.305, type: 'Food', isActive: true },
+  { pid: 13, name: 'Aluminum', price: 26.9815, type: 'Food', isActive: true },
+  { pid: 14, name: 'Silicon', price: 28.0855, type: 'Food', isActive: true },
+  { pid: 15, name: 'Phosphorus', price: 30.9738, type: 'Books', isActive: true }
+  { pid: 16, name: 'Sulfur', price: 32.065, type: 'Books', isActive: true }
+  { pid: 17, name: 'Chlorine', price: 35.453, type: 'Books', isActive: true }
+  { pid: 18, name: 'Argon', price: 39.948, type: 'Books', isActive: true }
+  { pid: 19, name: 'Potassium', price: 39.0983, type: 'Books', isActive: true }
+  { pid: 20, name: 'Calcium', price: 40.078, type: 'Electronics,', isActive: true },
   */
 ];

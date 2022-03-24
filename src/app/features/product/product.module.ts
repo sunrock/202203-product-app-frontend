@@ -9,7 +9,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
 
 import { ProductMainComponent } from './components/product-main/product-main.component';
-import { ConfirmDeleteModalComponent } from './components/confirm-delete-modal/confirm-delete-modal.component';
+import { ConfirmDeleteModalComponent } from './components/product-main/confirm-delete-modal/confirm-delete-modal.component';
 
 
 
