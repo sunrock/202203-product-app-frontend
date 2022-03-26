@@ -1,0 +1,49 @@
+<div class="header">
+  <h1 *ngIf="isAdding; else isEditing">Add a new Product</h1>
+  <ng-template #isEditing>
+    <h1>Edit Product {{ productName }}</h1>
+  </ng-template>
+</div>
+
+<div class="form-wrapper">
+  <form class="form-container" [formGroup]="productForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" />
+      <mat-error *ngIf="productForm.controls[name].invalid">
+        {{ getErrorMessage(name) }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Price</mat-label>
+      <input matInput formControlName="price" required />
+      <span matPrefix>$&nbsp;</span>
+      <mat-error *ngIf="productForm.controls[price].invalid">
+        {{ getErrorMessage(price) }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Type</mat-label>
+      <!-- <mat-select [value]="options.controls['type'].value" (change)="onChangeProductType($event)"> -->
+      <mat-select formControlName="type" (selectionChange)="onChangeProductType($event)">
+        <mat-option disabled>Select Type</mat-option>
+        <mat-option *ngFor="let type of typeOptions" [value]="type">
+          {{ type }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-slide-toggle [checked]="productForm.controls[isActive].value" (change)="onChangeActiveStatus($event)">
+        isActive
+      </mat-slide-toggle>
+      <input matInput hidden />
+    </mat-form-field>
+
+    <button mat-flat-button color="primary" class="submit-button"
+      (click)="onSubmitProductForm(productForm)">Submit</button>
+
+  </form>
+</div>
