@@ -56,7 +56,7 @@
     <ng-container matColumnDef="delete_action">
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let row">
-        <button mat-button (click)="onConfirmDelete(row.name)">
+        <button mat-button (click)="onConfirmDelete(row)">
           <mat-icon matTooltip="Delete Product" color="warn">delete</mat-icon>
         </button>
       </td>

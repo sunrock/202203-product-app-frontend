@@ -1,11 +1,10 @@
-import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { DEMO_DATA } from '../../data';
 import { Product } from '../../models';
+import { ProductActionService } from '../../services/product-action.service';
 import { ConfirmDeleteModalComponent } from './confirm-delete-modal/confirm-delete-modal.component';
 
 @Component({
@@ -22,24 +21,28 @@ export class ProductMainComponent implements OnInit, AfterViewInit {
     'delete_action'
   ];
 
-  dataSource = new MatTableDataSource<Product>(DEMO_DATA);
+  dataSource = new MatTableDataSource<Product>([])
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(
     public dialog: MatDialog,
-    private _liveAnnouncer: LiveAnnouncer
+    private productSvc: ProductActionService
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.reloadProducts()
+  }
 
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
   }
 
-  onConfirmDelete(productName: string) {
+  onConfirmDelete(product: Product) {
+
+    const productName = product.name;
 
     console.log('productName: ', productName)
     const dialogRef = this.dialog.open(ConfirmDeleteModalComponent, {
@@ -51,10 +54,27 @@ export class ProductMainComponent implements OnInit, AfterViewInit {
       // if confirmed
       if (result) {
         console.log('confirmed: ', result);
+
+        this.productSvc.deleteProduct(product.pid).subscribe({
+          next: _ => {
+            this.reloadProducts()
+          }
+        })
       }
 
       console.log('The dialog was closed')
     });
+  }
+
+  private reloadProducts() {
+    this.productSvc.getProducts().subscribe(
+      rd => {
+        const products: Product[] = rd.data;
+
+        console.log()
+        this.dataSource.data = products;
+      }
+    )
   }
 
 }

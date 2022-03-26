@@ -5,6 +5,7 @@ import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductActionService } from '../../services/product-action.service';
 import { first } from 'rxjs/operators';
+import { Product, ProductBody } from '../../models';
 
 // should be 100
 const NAME_MAX_LENGH: number = 10;
@@ -40,6 +41,7 @@ export class AddEditProductDetailsComponent implements OnInit {
   constructor(
     fb: FormBuilder,
     private route: ActivatedRoute,
+    private router: Router,
     private productSvc: ProductActionService
   ) {
     this.productForm = fb.group({
@@ -52,17 +54,19 @@ export class AddEditProductDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.pid = this.route.snapshot.params['pid'];
-    console.log('id', this.pid)
+    console.log('pid', this.pid)
     this.isAdding = !this.pid;
 
     console.log('mode is adding: ', this.isAdding)
 
     if (!this.isAdding) {
-      this.productSvc.getProductById(+this.pid)
-        .pipe(first())
-        .subscribe(x => {
-          this.productName = x.name;
-          this.productForm.patchValue(x)
+      this.productSvc.getProductById(this.pid)
+        // .pipe(first())
+        .subscribe(rd => {
+          const product: Product = rd.data;
+          console.log('product', product)
+          this.productName = product.name;
+          this.productForm.patchValue(product)
         });
     }
   }
@@ -103,19 +107,38 @@ export class AddEditProductDetailsComponent implements OnInit {
   onSubmitProductForm(form = this.productForm) {
 
     if (form.valid) {
-      console.log('Form is valid')
+      console.log('Form is valid', form.value)
+
+      let productFileds: ProductBody = form.value;
 
       if (this.isAdding) {
-        this.productSvc.addProduct()
+        this.productSvc.addProduct(productFileds).subscribe({
+          next: _ => {
+            this.router.navigate(['/'])
+          }
+        })
       }
       else {
-        this.productSvc.updateProduct()
+        this.productSvc.updateProduct(this.pid, productFileds).subscribe({
+          next: _ => {
+            this.router.navigate(['/'])
+          }
+        })
       }
-
 
     } else {
       console.log('Form is invalid')
     }
+  }
+
+  private formatData(form = this.productForm) {
+    const formValue = form.value;
+    let formKeys = Object.keys(formValue);
+
+    console.log(formValue)
+
+
+
   }
 
 
