@@ -2,13 +2,21 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ConfirmDeleteModalComponent } from './confirm-delete-modal.component';
 
+import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
 describe('ConfirmDeleteModalComponent', () => {
   let component: ConfirmDeleteModalComponent;
   let fixture: ComponentFixture<ConfirmDeleteModalComponent>;
+  let dialogRefMock: any
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ConfirmDeleteModalComponent ]
+      imports: [ MatDialogModule ],
+      declarations: [ ConfirmDeleteModalComponent ],
+      providers: [
+        { provide: MAT_DIALOG_DATA, useValue: {} },
+        { provide: MatDialogRef, useValue: dialogRefMock }
+      ]
     })
     .compileComponents();
   });

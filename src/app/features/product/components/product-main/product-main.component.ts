@@ -27,7 +27,7 @@ export class ProductMainComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(
-    public dialog: MatDialog,
+    private dialog: MatDialog,
     private productSvc: ProductActionService
   ) { }
 
@@ -66,7 +66,7 @@ export class ProductMainComponent implements OnInit, AfterViewInit {
     });
   }
 
-  private reloadProducts() {
+  reloadProducts() {
     this.productSvc.getProducts().subscribe(
       rd => {
         const products: Product[] = rd.data;

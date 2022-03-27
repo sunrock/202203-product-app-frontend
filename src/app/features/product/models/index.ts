@@ -13,6 +13,6 @@ export interface ProductBody {
   isActive: boolean;
 }
 
-export enum ProductType {
-
-}
+export const PROD_TYPES = [
+  'Books', 'Electronics', 'Food', 'Furniture', 'Toys'
+]

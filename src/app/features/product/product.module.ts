@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -42,7 +43,8 @@ import { AddEditProductDetailsComponent } from './components/add-edit-product-de
     MatInputModule,
     MatSelectModule,
     MatSlideToggleModule,
-    MatSortModule
+    MatSortModule,
+    BrowserAnimationsModule
   ],
   exports: [
     ProductMainComponent

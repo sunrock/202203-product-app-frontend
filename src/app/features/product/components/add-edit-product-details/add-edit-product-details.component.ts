@@ -5,7 +5,7 @@ import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductActionService } from '../../services/product-action.service';
 import { first } from 'rxjs/operators';
-import { Product, ProductBody } from '../../models';
+import { Product, ProductBody, PROD_TYPES } from '../../models';
 
 // should be 100
 const NAME_MAX_LENGH: number = 10;
@@ -28,23 +28,20 @@ export class AddEditProductDetailsComponent implements OnInit {
 
   productForm: FormGroup;
 
-  typeOptions = [
-    'Books', 'Electronics', 'Food', 'Furniture', 'Toys'
-  ]
+  typeOptions = PROD_TYPES;
 
   name = 'name'
   price = 'price'
   type = 'type'
   isActive = 'isActive'
 
-
   constructor(
-    fb: FormBuilder,
+    private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
     private productSvc: ProductActionService
   ) {
-    this.productForm = fb.group({
+    this.productForm = this.fb.group({
       name: ['', [Validators.required, Validators.maxLength(NAME_MAX_LENGH)]],
       price: ['', [Validators.required, Validators.pattern(PRICE_REGEX)]],
       type: ['', [Validators.required, Validators.pattern(TYPE_REGEX)]],
@@ -130,16 +127,5 @@ export class AddEditProductDetailsComponent implements OnInit {
       console.log('Form is invalid')
     }
   }
-
-  private formatData(form = this.productForm) {
-    const formValue = form.value;
-    let formKeys = Object.keys(formValue);
-
-    console.log(formValue)
-
-
-
-  }
-
 
 }

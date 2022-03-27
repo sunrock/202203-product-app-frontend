@@ -28,8 +28,7 @@ export class ProductActionService {
   }
 
   addProduct(body: ProductBody) {
-    let addProductURL = baseURL + 'product'
-
+    let addProductURL = baseURL + 'product';
     return this.http.post<ResponseData>(addProductURL, body).pipe(
       catchError(this.handleError)
     );
@@ -37,24 +36,20 @@ export class ProductActionService {
 
   updateProduct(pid: string, body: ProductBody) {
     let updateProductURL = baseURL + 'product/' + pid;
-
-    console.log('updateProductURL', updateProductURL)
-    console.log('body', body)
-
     return this.http.put<ResponseData>(updateProductURL, body).pipe(
       catchError(this.handleError)
     );
   }
 
   getProducts(): Observable<ResponseData> {
-    let productsURL = baseURL + 'products'
+    let productsURL = baseURL + 'products';
     return this.http.get<ResponseData>(productsURL).pipe(
       catchError(this.handleError)
     )
   }
 
   deleteProduct(pid: string): Observable<ResponseData> {
-    let productsURL = baseURL + 'product/' + pid
+    let productsURL = baseURL + 'product/' + pid;
     return this.http.delete<ResponseData>(productsURL).pipe(
       catchError(this.handleError)
     )
@@ -73,6 +68,5 @@ export class ProductActionService {
     // Return an observable with a user-facing error message.
     return throwError(() => new Error('Something bad happened; please try again later.'));
   }
-
 
 }
