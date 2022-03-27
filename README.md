@@ -25,9 +25,9 @@ The are two folders under src/app, core and features, common (& shared) componen
 The product related compoents/services/models are put under features folder, and I used a module product to declare all components related to product.
 
 
-# test
-Test is my weakness, I did not provide proper unit tests...
-
+## Test
+I know it could be a huge disadvantage in this code test, I admitted that I did not provide proper unit tests. However, it is a good opportunity to learn from this code test. I learned how to remove karma / jasmine from Angular and setup jest testing framework, and wrote some simple tests! That would be great for me, and if I could have the chance to work with you, I would learn a lot from you guys!
+ 
 # ProductApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.16.
