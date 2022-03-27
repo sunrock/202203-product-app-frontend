@@ -11,11 +11,13 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { AppComponent } from './app.component';
 import { HeaderBarComponent } from './core/components/header-bar/header-bar.component';
+import { PageNotFoundComponent } from './core/components/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderBarComponent
+    HeaderBarComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

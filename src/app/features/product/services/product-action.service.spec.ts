@@ -146,12 +146,6 @@ describe('ProductActionService', () => {
 
   it('should test deleteProduct', (done) => {
     const pid = 'def'
-    const mockProduct: ProductBody = {
-      name: 'Product Sample 3',
-      price: 19.95,
-      type: PROD_TYPES[2],
-      isActive: true
-    }
     const url = baseURL + 'product/' + pid;
     const res = {
       message: 'Product deleted.'

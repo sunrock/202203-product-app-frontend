@@ -8,7 +8,7 @@ import { first } from 'rxjs/operators';
 import { Product, ProductBody, PROD_TYPES } from '../../models';
 
 // should be 100
-const NAME_MAX_LENGH: number = 10;
+const NAME_MAX_LENGH: number = 100;
 const PRICE_REGEX = /^\d+(\.\d{1,2})?$/
 const TYPE_REGEX = /^(Books|Electronics|Food|Furniture|Toys)$/
 
